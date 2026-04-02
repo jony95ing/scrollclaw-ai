@@ -49,6 +49,15 @@ else
   echo "       → Then run: source ~/.bashrc"
 fi
 
+if [[ -n "${VIRLO_API_KEY:-}" ]]; then
+  pass "VIRLO_API_KEY is set"
+else
+  fail "VIRLO_API_KEY is missing"
+  echo "       → Get your key from your Virlo dashboard"
+  echo "       → Add to ~/.bashrc: export VIRLO_API_KEY=\"your-key\""
+  echo "       → Then run: source ~/.bashrc"
+fi
+
 # ─────────────────────────────────────────────
 # 2. Optional environment variables
 # ─────────────────────────────────────────────

@@ -1,6 +1,6 @@
 ---
 name: scrollclaw
-description: "Router and orchestrator for AI UGC video production. Use for broad outcome requests like making a UGC video or running a campaign; it routes step-specific requests to the right sub-skill and can drive the full pipeline from persona research through virality-scored video."
+description: "Router and orchestrator for AI UGC video production. Use for broad outcome requests like making a UGC video or running a campaign; it routes step-specific requests to the right sub-skill and can drive the full pipeline from Virlo trend signal through virality-scored video."
 metadata:
   openclaw:
     emoji: "🎬"
@@ -30,7 +30,7 @@ Brand name + URL
       ↓
 Brand + Audience
       ↓
-/persona    → Persona research, creator profiles, approved script
+/persona    → Signal (Virlo), winner analysis, remix, creator profiles, approved script
 /first-frame → Canonical face image (Nano Banana 2)
 /animate    → A-roll talking head clips (Sora 2 i2v)
 /b-roll     → Environment + product shots (Kling 3)
@@ -53,8 +53,8 @@ When the user invokes ScrollClaw or asks about UGC video, route to the right sub
 | User says / wants | Route to |
 |-------------------|----------|
 | "Set up a brand" / "Initialize brand" / "New brand" / "Brand research" | `/brand-setup` — one-time, before first campaign |
-| "Make me a UGC video" / "Start a campaign" / "I need ugc" | `/persona` — start at the beginning |
-| "Research this brand" / "Create a creator profile" / "Write a script" | `/persona` |
+| "Make me a UGC video" / "Start a campaign" / "I need ugc" | `/persona` — start at Signal + Analyze + Remix |
+| "Find winning videos in my niche" / "Analyze trends" / "Create a creator profile" / "Write a script" | `/persona` |
 | "Generate the first frame" / "Make a face image" / "Nano Banana" | `/first-frame` |
 | "Animate this" / "Make a talking head clip" / "Sora" / "A-roll" | `/animate` |
 | "Generate B-roll" / "Product shot" / "Kling" | `/b-roll` |
@@ -79,7 +79,7 @@ If the user isn't sure where they are, ask: **"Where are you in the pipeline?"**
 ### Output
 - Produces: either a route decision to the correct stage or a sequential full-pipeline run starting at `/persona`
 - Format: inline orchestration plus saved workspace artifacts produced by sub-skills
-- Default behavior: broad requests like "make me a UGC video" or "start a campaign" start at `/persona` and continue stage by stage until blocked by missing inputs, an approval gate, or a dependency failure
+- Default behavior: broad requests like "make me a UGC video" or "start a campaign" start at `/persona` (Signal + Analyze + Remix) and continue stage by stage until blocked by missing inputs, an approval gate, or a dependency failure
 - Downstream use: `/persona`, `/first-frame`, `/animate`, `/b-roll`, `/assemble`, and `/score`
 
 ### Validation
@@ -119,7 +119,8 @@ bash scripts/check-deps.sh
 |-----|----------|---------|
 | `FAL_KEY` | Yes | Sora 2 (A-roll) + Kling 3 (B-roll) |
 | `REPLICATE_API_TOKEN` | Yes | Nano Banana (first frames) |
-| `OPENROUTER_API_KEY` | Recommended | Gemini (virality scoring) |
+| `VIRLO_API_KEY` | Yes | Virlo trend discovery (Signal stage) |
+| `OPENROUTER_API_KEY` | Recommended | Gemini (analysis + virality scoring) |
 | `ELEVENLABS_API_KEY` | Optional | Multi-clip voice consistency (S2S) |
 
 ---

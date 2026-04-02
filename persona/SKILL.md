@@ -1,15 +1,17 @@
 ---
 name: scrollclaw-persona
-description: "Start of the UGC pipeline for persona research, creator profiles, format selection, and scriptwriting. Use when the user is clearly asking for messaging work rather than broad full-pipeline orchestration."
+description: "Start of the UGC pipeline for signal discovery (Virlo trends), winner analysis, remix, creator profiles, format selection, and scriptwriting. Use when the user is asking for messaging and concept work."
 metadata:
   openclaw:
     emoji: "🎭"
     user-invocable: true
     triggers:
-      - "persona research"
+      - "trend research"
       - "ugc persona"
       - "ugc script"
       - "ugc research"
+      - "virlo"
+      - "winning videos"
       - "write ugc script"
       - "creator profile"
       - "format selection"
@@ -20,16 +22,16 @@ metadata:
 
 Everything starts here. No first frames, no animation, no audio until the messaging is locked.
 
-## Step 1: Persona Research (do not skip)
+## Step 1: Signal (Virlo API) (do not skip)
 
-Read `references/persona-research.md`. Minimum 60 minutes mining competitor reviews on Amazon, Trustpilot, Reddit. Copy exact phrases — do not paraphrase.
+Read `references/persona-research.md`. Pull winning social videos in the niche using Virlo API before writing any script.
 
-You're looking for exact language, not information:
-- "I was doing everything right and my body wasn't cooperating" → goes into a script
-- "I finally feel like myself again" → useless, discard
-- "I wore a dress I hadn't put on since my daughter was born and cried in the fitting room" → this is what you want
+Required process:
+1. **Signal:** find what's outperforming in the niche (platform, hook style, watch-through pattern).
+2. **Analyze:** break down why each winner worked (hook, pacing, story beats, payoff, visual grammar).
+3. **Remix:** adapt concepts to the product and brand voice (never copy line-by-line).
 
-Specific language produces viewers who can viscerally imagine the result. Generic language produces viewers who merely understand it's possible. The first converts. The second doesn't.
+The goal is not to imitate one creator. The goal is to model winning structures and re-express them in the brand's voice.
 
 ## Step 2: Brand Context
 
@@ -51,7 +53,7 @@ Refer to the format table in the system context (loaded automatically). Ask the 
 
 ## Step 5: Script
 
-Read `references/script-voice.md`. Use exact phrases from persona research. Test every line: if it sounds like a copywriter wrote it, rewrite until it sounds like someone talking to their phone.
+Read `references/script-voice.md`. Use the winning patterns from Signal/Analyze plus real audience language from your context docs. Test every line: if it sounds like a copywriter wrote it, rewrite until it sounds like someone talking to their phone.
 
 **FORMAT ENFORCEMENT (mandatory):** Before writing, pull the shot breakdown from `the format table in the system context (loaded automatically)` for the chosen format. The script MUST map to the shot breakdown:
 
@@ -83,7 +85,7 @@ Mark the script with `[A-ROLL]` and `[B-ROLL]` tags. A-roll = Sora (talking head
 ### Writes
 | File | Notes |
 |------|-------|
-| `workspace/campaigns/<slug>/persona-research.md` | Extracted phrases, pain points, exact customer language |
+| `workspace/campaigns/<slug>/persona-research.md` | Virlo trend signal, winner breakdowns, remix notes, and usable language |
 | `workspace/campaigns/<slug>/creators/creator-<name>.md` | Campaign-specific creator profile |
 | `workspace/creators/creator-<name>.md` | Global reusable profile (when creator will appear across campaigns) |
 | `workspace/campaigns/<slug>/scripts/<format>-script.md` | Approved script with A/B-roll tags |
@@ -105,23 +107,23 @@ Handle missing files gracefully. Never error. Proceed standalone with a note.
 ### Input
 - Required: campaign brief plus a clear product, audience, or offer to write from
 - Optional: `workspace/brand/{voice-profile,positioning,audience}.md`, existing creator profiles, format preference
-- Format: brief, raw brand notes, review mining inputs, and workspace markdown files
+- Format: brief, raw brand notes, Virlo trend inputs, and workspace markdown files
 - Source: user prompt, `workspace/campaigns/<slug>/brief.md`, and upstream brand memory files
 
 ### Output
-- Produces: persona research, creator profile(s), and one approved script with `[A-ROLL]` and `[B-ROLL]` tags
+- Produces: signal+analysis+remix research, creator profile(s), and one approved script with `[A-ROLL]` and `[B-ROLL]` tags
 - Format: markdown files in `workspace/campaigns/<slug>/` plus inline script review for approval
 - Default behavior: do the research, choose the format, and present the script for approval before any visual generation
 - Downstream use: `/first-frame`, `/animate`, `/b-roll`, `/assemble`, `/score`
 
 ### Validation
 - Pre-conditions: campaign brief exists and there is enough product context to identify a real customer problem
-- Post-conditions: script maps to the format blueprint, uses exact customer language, and has explicit visual beats
+- Post-conditions: script maps to the format blueprint, uses winning structures adapted to brand voice, and has explicit visual beats
 - Failure checks: do not advance with generic copy, missing segment mapping, or an unapproved script unless the user explicitly says to skip approval
 
 ## Output
 
-- Persona research doc with extracted phrases — `workspace/campaigns/<slug>/persona-research.md`
+- Signal/analysis/remix doc with winning structures — `workspace/campaigns/<slug>/persona-research.md`
 - Creator profile(s) in `workspace/campaigns/<slug>/creators/` (or `workspace/creators/` for global)
 - Approved script with segment mapping and A/B-roll tags — `workspace/campaigns/<slug>/scripts/<format>-script.md`
 - Format selection locked

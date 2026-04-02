@@ -1,113 +1,106 @@
-# Persona Research
+# Signal + Analyze + Remix
 
-3 hours of persona work before a single production decision. Not demographics. Not bullet points. A fully documented understanding of who the person is, what they've tried, why each attempt failed, what the failures felt like, and what they actually want at the specificity level that separates content that informs from content that converts.
+Start with market signal, not opinion. Before writing a single line, find what is already winning in the target niche and decode why.
 
 ## The research process
 
-### Step 1: Mine real language (60 minutes minimum)
+### Step 1: Signal (Virlo API, 30-60 minutes)
 
-Read competitor product reviews on Amazon and Trustpilot. You are not reading for product information. You are reading for:
+Use Virlo API to collect top-performing short-form videos for the target niche.
 
-1. **The exact language** people use to describe their experience *before* they found the product
-2. **Specific frustrations** with alternatives they tried
-3. **Specific moments** that made the transformation real for them
+Prioritize:
+1. High view velocity (recent growth, not only total views)
+2. High engagement quality (comments/saves/shares, not just likes)
+3. Repeatable structure (hook/story/payout that can be remixed)
 
-**Copy exact phrases. Do not paraphrase.**
+Capture for each winner:
+- Platform + link
+- Hook transcript (first 2-4 seconds)
+- Video length and pacing pattern
+- Story beats by timestamp
+- Comment sentiment themes
 
-"I was doing everything right and my body wasn't cooperating" — this is a real sentence from a real review. This goes directly into a pain acknowledgment script line.
+### Step 2: Analyze winners (30-60 minutes)
 
-"I finally feel like myself again" — this is generic positive sentiment. It tells you nothing useful. Discard it.
+For each winner, answer:
+1. What exact hook pattern stopped the scroll?
+2. What emotional job does the video do? (fear, status, relief, curiosity)
+3. Where does proof appear? (demo, result, authority, social proof)
+4. What is the cadence? (cuts, pauses, beat density)
+5. Why would this fail if copied literally?
 
-"I wore a dress I hadn't put on since my daughter was born and cried in the fitting room" — this is a specific transformation moment that makes a viewer imagine themselves in that situation. This is what you're looking for.
+Do not copy scripts verbatim. Extract structure, mechanics, and emotional sequencing.
 
-### The conversion difference
+### Step 3: Remix to your brand (30-60 minutes)
 
-- Viewer who **understands** that positive results are possible → does not convert
-- Viewer who can **viscerally imagine experiencing** the result → converts
+Translate winner mechanics into your product and audience reality:
+- Keep: hook architecture, pacing, proof style
+- Replace: niche references, claims, examples, voice
+- Add: your product's differentiator and real use context
 
-The difference between those two viewers is the specificity of the language in the script. Generic language produces understanding. Specific language from real people produces imagination. Imagination produces conversion.
+A remix should feel native to your brand, not like a clone of another creator.
 
-### Step 2: Build the failure timeline
-
-Document what the persona tried before this product, in order:
-- What they tried first
-- Why it failed (in their words)
-- How the failure felt (specific emotional texture, not "frustrated")
-- What they tried next
-- Why that also failed
-- The accumulated emotional weight of serial failure
-
-This timeline becomes the "before state" script content. When a viewer hears their own failure history narrated back to them, the identification is immediate and visceral.
-
-### Step 3: Find the transformation moment
-
-Not "the product worked." The specific, physical, sensory moment where the person knew things had changed.
-
-Bad: "I lost 15 pounds."
-Good: "I wore a dress I hadn't put on since my daughter was born and cried in the fitting room."
-
-Bad: "My skin cleared up."
-Good: "My coworker asked if I'd been on vacation. I hadn't. I just stopped wearing foundation for the first time in four years."
-
-Bad: "I sleep better now."
-Good: "I woke up before my alarm and just... lay there. Not anxious. Not exhausted. Just normal. I forgot what that felt like."
-
-The transformation moment is always:
-- A specific scene (place, time, who was there)
-- A sensory detail (what they saw, felt, heard)
-- An emotional reaction they didn't expect
-
-### Step 4: Document the persona
+### Step 4: Document the research
 
 ```markdown
-# Persona: [Name]
+# Signal Brief: [Campaign Name]
 
-## Who they are
-- Age, life stage, daily reality (not demographics — life texture)
+## Niche + objective
+- Niche:
+- Goal:
+- Platform focus:
 
-## What they've tried (failure timeline)
-1. [First attempt] → [why it failed] → [how it felt]
-2. [Second attempt] → [why it failed] → [how it felt]
-3. [Third attempt] → [why it failed] → [accumulated weight]
+## Winners pulled from Virlo
+1. [URL]
+   - Hook:
+   - Beat map:
+   - Why it worked:
+2. [URL]
+   - Hook:
+   - Beat map:
+   - Why it worked:
 
-## Their exact language (copied from reviews)
-- Pain: "[exact quote]", "[exact quote]"
-- Frustration: "[exact quote]", "[exact quote]"
-- Hope: "[exact quote]"
-- Transformation: "[exact quote]"
+## Winning patterns (cross-video)
+- Hook archetypes:
+- Cadence archetypes:
+- Proof archetypes:
+- CTA archetypes:
 
-## The transformation moment
-[One specific scene with sensory detail]
+## Remix directions for our brand
+1. [Concept name]
+   - Derived from:
+   - Adapted hook:
+   - Product proof moment:
+2. [Concept name]
+   - Derived from:
+   - Adapted hook:
+   - Product proof moment:
 
-## What they actually want
-Not the product benefit. The life state. The feeling. The moment.
-
-## What they're afraid of
-The specific fear that makes them hesitate, even when they believe the product might work.
+## Guardrails
+- Claims to avoid:
+- Compliance constraints:
+- Brand voice constraints:
 ```
 
 ## How this feeds the skill
 
 ### Into scripts
-The exact-language phrases from reviews go directly into scripts. Not adapted. Not paraphrased. The creator says what real customers said, because real language sounds real and adapted language sounds like marketing.
+Winning structures from Virlo analysis become script skeletons. The final lines must still sound like a real person speaking on a phone.
 
 ### Into first frames
-The transformation moment defines the "after" visual. The failure timeline's worst moment defines the "before" visual. Specific scenes from the persona research become specific Nano Banana prompts.
+Hook style and proof style define first-frame intent (expression, composition, and context) before generation.
 
 ### Into format selection
-The failure timeline determines whether a talking-head review (simple product, short journey) or narrative transformation (complex journey, emotional weight) is the right format.
+If winners are mostly face-first emotional hooks, route to Talking Head or Hook Face + Demo. If winners rely on visual mechanism reveal, route to Hybrid or Visual Transformation.
 
 ### Into creator casting
-The persona's age, life stage, and visual context determine which AI creator profile to use. The creator should look like someone the persona would trust — which usually means someone who looks like they've been through the same thing.
+Pick creators who match the trust profile observed in winning videos (age band, presentation style, energy).
 
-## Research sources
+## Recommended source order
 
-In priority order:
-1. **Amazon reviews** (1-3 star reviews are more useful than 5-star — they contain the failures and frustrations)
-2. **Trustpilot reviews**
-3. **Reddit threads** (r/SkincareAddiction, r/loseit, r/fitness, etc. — wherever the audience discusses the problem)
-4. **Facebook groups** (if accessible)
-5. **YouTube comments** on competitor product reviews
-6. **TikTok comments** on related content
+1. **Virlo API winners** (primary signal source)
+2. **Platform comments** on those winners (why it resonated)
+3. **Brand context files** (`voice-profile.md`, `positioning.md`, `audience.md`)
+4. **Optional review language** (only to sharpen phrasing, not as primary signal)
 
-Spend at least 60 minutes reading before writing a single word of script. The temptation to skip this and go straight to production is the reason most AI UGC campaigns produce content that informs but doesn't convert.
+Do not skip Signal/Analyze/Remix. Starting from blank intuition is slower and consistently underperforms.

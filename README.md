@@ -21,7 +21,7 @@ UGC works because it looks like someone pulled out their phone and talked.
 
 This skill makes AI produce that.
 
-Not by adding filters after. By building the entire pipeline around anti-polish: persona research that steals real customer language, first frames that look like iPhone photos, motion prompts that produce handheld energy, audio that sounds like a kitchen not a studio, and post-production that adds grain instead of removing it.
+Not by adding filters after. By building the entire pipeline around anti-polish: trend signal discovery with Virlo API, analysis of why winner videos worked, remixing those winning patterns into your brand voice, first frames that look like iPhone photos, motion prompts that produce handheld energy, audio that sounds like a kitchen not a studio, and post-production that adds grain instead of removing it.
 
 ---
 
@@ -37,16 +37,18 @@ Brand name + URL
 Brand + Audience
       ↓
 ┌─────────────────────────────┐
-│  1. Persona research        │  ← mines real reviews for exact language
-│  2. Creator profile         │  ← persistent AI "creator" with locked identity
-│  3. Format + script         │  ← 6 formats with shot-by-shot enforcement
-│  4. First frame (Nano Banana)│  ← iPhone-realistic, not AI-looking
-│  5. A-roll (Sora 2 → Kling 3)│ ← talking head with synced voice + lip sync
-│  6. B-roll (Kling 3)       │  ← fast contextual scenes, env-matched
-│  7. Audio orchestration     │  ← native voice, continuous over B-roll
-│  8. Post-production         │  ← color grade, grain, frame rate
-│  9. Captions                │  ← native platform-style overlays
-│ 10. Virality scoring        │  ← 7-criteria gate, only 70+ publishes
+│  1. Signal (Virlo trends)   │  ← find what's outperforming in your niche
+│  2. Analyze winners         │  ← break down WHY each winner worked
+│  3. Remix to brand          │  ← adapt winning concepts to your product
+│  4. Creator profile         │  ← persistent AI "creator" with locked identity
+│  5. Format + script         │  ← 6 formats with shot-by-shot enforcement
+│  6. First frame (Nano Banana)│ ← iPhone-realistic, not AI-looking
+│  7. A-roll (Sora 2 → Kling 3)│ ← talking head with synced voice + lip sync
+│  8. B-roll (Kling 3)        │  ← fast contextual scenes, env-matched
+│  9. Audio orchestration     │  ← native voice, continuous over B-roll
+│ 10. Post-production         │  ← color grade, grain, frame rate
+│ 11. Captions                │  ← native platform-style overlays
+│ 12. Virality scoring        │  ← 7-criteria gate, only 70+ publishes
 └─────────────────────────────┘
       ↓
 Scroll-stopping UGC video
@@ -71,6 +73,7 @@ Scroll-stopping UGC video
 |-----|----------|-------------|
 | `FAL_KEY` | Yes | Sora 2 (talking head video) + Kling 3 (B-roll) via fal.ai |
 | `REPLICATE_API_TOKEN` | Yes | Nano Banana (first frame image generation) |
+| `VIRLO_API_KEY` | Yes | Virlo trend signal feed (discover top-performing social videos) |
 | `OPENROUTER_API_KEY` | Recommended | Gemini via OpenRouter (virality scoring + analysis) |
 | `ELEVENLABS_API_KEY` | Optional | Only for multi-clip voice consistency (S2S) |
 
@@ -100,7 +103,7 @@ bash scripts/check-deps.sh
    cp assets/audience-template.md workspace/brand/audience.md
    ```
 2. **Run the dependency check** to make sure everything's configured
-3. **Tell the skill what brand and who the audience is** — it handles persona research
+3. **Run Signal + Analyze + Remix** — pull trending videos with Virlo, break down why they win, adapt concepts to your product
 4. **Pick a format** — the skill recommends one based on your goal
 5. **Approve the script** — it writes one mapped to the format's shot breakdown
 6. **Generate the first frame** — review it before committing to video
@@ -145,7 +148,7 @@ scrollclaw/
 │   ├── SKILL.md
 │   └── references/
 │       └── research-protocol.md
-├── persona/                    Step 1: Persona research + scripting
+├── persona/                    Step 1: Signal + Analyze + Remix + scripting
 │   ├── SKILL.md
 │   └── references/
 │       ├── persona-research.md
@@ -190,12 +193,12 @@ ScrollClaw persists work across sessions so campaign 10 takes a fraction of camp
 workspace/
 ├── brand/                      ← Written by /brand-setup (recommended), GrowthClaw, or manually from assets/ templates
 │   ├── voice-profile.md        ← Informs script tone
-│   ├── positioning.md          ← Informs persona research direction
+│   ├── positioning.md          ← Informs trend remix direction
 │   └── audience.md             ← Anchors creator archetype selection
 ├── creators/                   ← Global creator profiles (reuse across campaigns)
 └── campaigns/<slug>/
     ├── brief.md                ← Campaign brief
-    ├── persona-research.md     ← Extracted customer language
+    ├── persona-research.md     ← Trend signal + winner analysis + remix notes
     ├── creators/               ← Campaign-specific creator overrides
     ├── scripts/                ← Approved scripts
     ├── frames/                 ← First frames + context frames

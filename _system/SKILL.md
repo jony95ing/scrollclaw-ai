@@ -14,7 +14,7 @@ AI video defaults to cinematic. Sweeping drone shots. Perfect lighting. Orchestr
 
 ## Core Doctrine
 
-**Messaging is the actual skill.** The tools improve weekly — visuals, voice, motion are getting solved. AI cannot solve having something worth saying. Most AI UGC fails not because it looks like AI but because the script sounds like a copywriter, not a customer. Persona research before production. Real language before prompts.
+**Messaging is the actual skill.** The tools improve weekly — visuals, voice, motion are getting solved. AI cannot solve having something worth saying. Most AI UGC fails not because it looks like AI but because the script sounds like a copywriter, not a customer. Signal before production. Real market winners before prompts.
 
 **Anti-polish is the product.** Every decision optimizes for "could a real person have shot this on their phone." Impressive is the enemy.
 
@@ -40,7 +40,7 @@ Ask: **what are we making?** Then route to the right format.
 | App/tool demo (scroll-stopper) | Hook Face + Demo | **Screen recording** (recommended) or screenshots | Hook face + captions. Demo = real footage. |
 | Authority / credibility | Podcast Clip | Brand context | Everything (face, set, voice) |
 | Quick visual transformation | Visual Transformation | Brand context, before/after concept | All imagery + animation |
-| Complex mechanism explanation | Hybrid Transformation | Brand context, deep persona research | Talking head bookends + slideshow |
+| Complex mechanism explanation | Hybrid Transformation | Brand context, deep winner-analysis context | Talking head bookends + slideshow |
 | Hot take / faceless | Wall of Text | The text content | Static image + text overlay |
 
 Read `references/format-library.md` for shot-by-shot blueprints. Read `references/hook-emotions.md` for the emotion taxonomy.
@@ -50,17 +50,19 @@ Read `references/format-library.md` for shot-by-shot blueprints. Read `reference
 | Step | Skill | What happens |
 |------|-------|-------------|
 | 0. Brand setup (one-time) | `/brand-setup` | Research brand, generate voice/positioning/audience files |
-| 1. Persona research | `/persona` | Mine reviews, extract real language |
-| 2. Brand context | `/persona` | Load brand voice, know the product |
-| 3. Creator profiles | `/persona` | Lock identity in `workspace/campaigns/<slug>/creators/` or `workspace/creators/` |
-| 4. Format + Script | `/persona` | Choose format, write script with visual beats |
-| 5. First frame | `/first-frame` | Nano Banana 2 → canonical face image |
-| 6. Animate (A-roll) | `/animate` | Sora 2 i2v → talking head clips |
-| 7. B-roll | `/b-roll` | Kling 3 → environment/product shots |
-| 8. Stitch + Audio | `/assemble` | Multi-clip stitching, ElevenLabs S2S voice |
-| 9. Post-production | `/assemble` | Color grade, grain, frame rate, phone test |
-| 10. Captions | `/assemble` | Native-style caption overlays (LAST step) |
-| 11. Score | `/score` | Virality scoring — 70+ to publish |
+| 1. Signal (Virlo trends) | `/persona` | Pull top-performing videos in niche |
+| 2. Analyze winners | `/persona` | Break down why each winner worked |
+| 3. Remix to brand | `/persona` | Adapt winning concepts to product + audience |
+| 4. Brand context | `/persona` | Load brand voice, know the product |
+| 5. Creator profiles | `/persona` | Lock identity in `workspace/campaigns/<slug>/creators/` or `workspace/creators/` |
+| 6. Format + Script | `/persona` | Choose format, write script with visual beats |
+| 7. First frame | `/first-frame` | Nano Banana 2 → canonical face image |
+| 8. Animate (A-roll) | `/animate` | Sora 2 i2v → talking head clips |
+| 9. B-roll | `/b-roll` | Kling 3 → environment/product shots |
+| 10. Stitch + Audio | `/assemble` | Multi-clip stitching, ElevenLabs S2S voice |
+| 11. Post-production | `/assemble` | Color grade, grain, frame rate, phone test |
+| 12. Captions | `/assemble` | Native-style caption overlays (LAST step) |
+| 13. Score | `/score` | Virality scoring — 70+ to publish |
 
 ## Anti-Patterns
 
@@ -84,7 +86,7 @@ Read `references/taste-calibration.md` for before/after examples that show what 
 
 **Output:** video clips (MP4), first-frame images (PNG), creator profiles, scripts, prompt logs. Default 9:16 vertical.
 
-**Env:** FAL_KEY (primary), REPLICATE_API_TOKEN (Nano Banana + fallback), ELEVENLABS_API_KEY (multi-clip voice), OPENROUTER_API_KEY (Gemini virality scoring).
+**Env:** VIRLO_API_KEY (trend signal), FAL_KEY (primary), REPLICATE_API_TOKEN (Nano Banana + fallback), ELEVENLABS_API_KEY (multi-clip voice), OPENROUTER_API_KEY (Gemini analysis + virality scoring).
 
 ## Brand & Campaign Context
 
@@ -98,12 +100,12 @@ ScrollClaw persists work across sessions using a structured workspace. Campaign 
 workspace/
 ├── brand/                    ← Read-only for ScrollClaw (written by /brand-setup, GrowthClaw, or manually)
 │   ├── voice-profile.md      ← Brand voice → informs script tone
-│   ├── positioning.md        ← Differentiation → informs persona research
+│   ├── positioning.md        ← Differentiation → informs trend remix direction
 │   └── audience.md           ← ICP → informs creator archetype selection
 ├── creators/                 ← Global creator profiles (reusable across campaigns)
 └── campaigns/<slug>/
     ├── brief.md              ← Campaign brief (from assets/campaign-brief-template.md)
-    ├── persona-research.md   ← Written by /persona
+    ├── persona-research.md   ← Written by /persona (signal + analysis + remix)
     ├── creators/             ← Campaign-specific creator overrides
     ├── scripts/              ← Approved scripts
     ├── frames/               ← First frames + context frames
@@ -118,7 +120,7 @@ workspace/
 | Skill | Reads | Writes |
 |-------|-------|--------|
 | `/brand-setup` | Brand website, social profiles, reviews, competitors (scraped) | `brand/voice-profile.md`, `brand/positioning.md`, `brand/audience.md` |
-| `/persona` | `brand/{voice-profile,positioning,audience}.md`, campaign brief | `persona-research.md`, `creators/`, `scripts/` |
+| `/persona` | `brand/{voice-profile,positioning,audience}.md`, campaign brief | `persona-research.md` (signal+analysis+remix), `creators/`, `scripts/` |
 | `/first-frame` | `creators/`, `scripts/`, campaign brief | `frames/`, `output-log.md` |
 | `/animate` | `frames/`, `scripts/`, `creators/` | `clips/a-roll-*.mp4`, `output-log.md` |
 | `/b-roll` | `frames/`, `clips/a-roll-*`, `scripts/` | `clips/b-roll-*.mp4`, `output-log.md` |
